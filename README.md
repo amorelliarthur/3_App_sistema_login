@@ -32,3 +32,11 @@ Transforma o CSS em componentes
 npm install styled-components --legacy-peer-deps
 
 ```
+
+Dependencia para navegar entre as paginas
+```
+npm install @react-navigation/native @react-navigation/native-stack
+```
+```
+npx expo install react-native-screens react-native-safe-area-context
+```
