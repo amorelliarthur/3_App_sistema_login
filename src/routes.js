@@ -12,20 +12,21 @@ export default function Routes() {
         <NavigationContainer>
             {/* Criar uma pilha de páginas */}
             <Stack.Navigator>
-            {/* Carregar as telas */}
-            <Stack.Screen 
-                name= 'Login'
-                component={Login}
-                options={{headerShown: false}}
-            />
-            <Stack.Screen 
-                name='NewUser'
-                component={NewUser}
-            />
-            <Stack.Screen 
-                name='RecoverPassword'
-                component={RecoverPassword}
-            />
+                {/* Carregar as telas */}
+                <Stack.Screen 
+                    name= 'Login'
+                    component={Login}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen 
+                    name='NewUser'
+                    component={NewUser}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen 
+                    name='RecoverPassword'
+                    component={RecoverPassword}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     )

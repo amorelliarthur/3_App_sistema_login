@@ -40,3 +40,13 @@ npm install @react-navigation/native @react-navigation/native-stack
 ```
 npx expo install react-native-screens react-native-safe-area-context
 ```
+
+Realizar chamadas para API
+```
+npm install axios
+```
+
+Validar o formulário
+```
+npm install yup
+```
