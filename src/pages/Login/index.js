@@ -1,8 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useContext, useState } from 'react';
+import { Text, View, Image, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView, ActivityIndicator} from 'react-native';
 import api from '../../config/api';
 import * as yup from 'yup';
+import { LoadingArea } from '../../styles/custom';
+
+//importar o context para verificar se o usuario esta logado
+import { AuthContext } from '../../contexts/auth';
+
 
 // importar arquivos com componente css
 import { Container, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo } from '../../styles/custom'
@@ -15,6 +21,10 @@ export default function Login (){
     //Armazenar as informações do usuário
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    //Recuperar a função signIn do context
+    const { signIn } = useContext(AuthContext);
 
     //Processar/submeter os dados do formulário
     const loginSubmit = async () => {
@@ -24,6 +34,10 @@ export default function Login (){
         //if(!validate()) return;
 
         try{
+
+            //Alterar loading para true e paresentar spinner
+            setLoading(true);
+
             //validar o formulario com yup
             await validationSchema.validate({
                 email, password
@@ -33,7 +47,17 @@ export default function Login (){
             await api.post('/login', {email, password})
             .then((response) => {
                 //console.log(response.data.message);
-                Alert.alert("Sucesso", response.data.message);
+                //Alert.alert("Sucesso", response.data.message);
+
+                AsyncStorage.setItem('@token', response.data.user.token);
+                AsyncStorage.setItem('@name', response.data.user.name);
+                AsyncStorage.setItem('@email', response.data.user.email);
+                
+                //redirecionar para pag inicial
+                //navigation.navigate('Home');
+                //chamar a função que está no memo e no context
+                signIn();
+
             }).catch((err) => {
             //console.log(err.response.data.message.toString());
                 if(err.response){
@@ -48,7 +72,10 @@ export default function Login (){
             } else {
                 Alert.alert("Ops", "Erro: Tente novamente!" );
             }
-        }  
+        } finally{
+            //Alterar loading para false e ocultar spinner
+            setLoading(false);
+        }
     }
 
     // validar formulario com js puro
@@ -85,6 +112,7 @@ export default function Login (){
                 keyboardType='email-address'
                 autoCapitalize='none'
                 value={email}
+                editable={!loading}
                 onChangeText={text => setEmail(text)}
             />
             <InputForm                 
@@ -92,9 +120,10 @@ export default function Login (){
                 autoCorrect={false}
                 secureTextEntry={true}
                 value={password}
+                editable={!loading}
                 onChangeText={text => setPassword(text)}
             />
-            <BtnSubmitForm onPress={loginSubmit}>
+            <BtnSubmitForm disabled={loading} onPress={loginSubmit}>
                 <TxtSubmitForm>
                     Acessar
                 </TxtSubmitForm>
@@ -106,6 +135,13 @@ export default function Login (){
             <LinkNewUser title='Recuperar Senha' onPress={ () => navigation.navigate('RecoverPassword')}>
                 Recuperar Senha
             </LinkNewUser>
+            
+            {loading && 
+                <LoadingArea>
+                    <ActivityIndicator size="large" color='#f5f5f5' />
+                </LoadingArea>
+            }
+            
         </Container>
         </ScrollView>
     )

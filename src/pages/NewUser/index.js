@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { Alert, ScrollView} from 'react-native';
+import { ActivityIndicator, Alert, ScrollView} from 'react-native';
 import api from '../../config/api';
 import * as yup from 'yup';
 
-import { Container, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo } from '../../styles/custom'
+import { Container, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo, LoadingArea } from '../../styles/custom'
 
 //Criar a função com a tela cadastrar usuario
 
@@ -15,11 +15,15 @@ export default function NewUser (){
     //Armazenar as informações do usuário
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');    
+    const [loading, setLoading] = useState(false);
 
     //Processar/submeter os dados do formulário
     const addUser = async () => {
         try{
+
+            //Alterar loading para true e paresentar spinner
+            setLoading(true);
 
             //validar o formulario com yup
             await validationSchema.validate({
@@ -47,6 +51,9 @@ export default function NewUser (){
             } else {
                 Alert.alert("Ops", "Erro: Tente novamente!" );
             }
+        } finally{
+            //Alterar loading para false e ocultar spinner
+            setLoading(false);
         }
     }
 
@@ -72,6 +79,7 @@ export default function NewUser (){
                 placeholder='Nome'
                 value={name}
                 onChangeText={text => setName(text)}
+                editable={!loading}
             />
             <InputForm
                 placeholder='E-mail'
@@ -80,6 +88,7 @@ export default function NewUser (){
                 autoCapitalize='none'
                 value={email}
                 onChangeText={text => setEmail(text)}
+                editable={!loading}
             />
             <InputForm
                 placeholder='Senha'
@@ -87,8 +96,9 @@ export default function NewUser (){
                 secureTextEntry={true}
                 value={password}
                 onChangeText={text => setPassword(text)}
+                editable={!loading}
             />
-            <BtnSubmitForm onPress={addUser}>
+            <BtnSubmitForm disabled={loading} onPress={addUser}>
                 <TxtSubmitForm>
                     Cadastrar
                 </TxtSubmitForm>
@@ -96,6 +106,11 @@ export default function NewUser (){
             <LinkNewUser onPress={ () => navigation.navigate('Login')}>
                 Login
             </LinkNewUser>
+            {loading && 
+                <LoadingArea>
+                    <ActivityIndicator size="large" color='#f5f5f5' />
+                </LoadingArea>
+            }
         </Container>
         </ScrollView>
     )

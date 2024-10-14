@@ -50,3 +50,8 @@ Validar o formulário
 ```
 npm install yup
 ```
+
+async-storage é utilizado para armazenar dados persistentes no dispositivo
+```
+npx expo install @react-native-async-storage/async-storage
+```
