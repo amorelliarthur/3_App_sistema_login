@@ -1,14 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from './pages/Login';
-import NewUser from './pages/NewUser';
-import RecoverPassword from './pages/RecoverPassword';
-import Home from './pages/Home';
-import VerifyKey from './pages/VerifyKey';
+import Login from '../pages/Login';
+import NewUser from '../pages/NewUser';
+import RecoverPassword from '../pages/RecoverPassword';
+import Home from '../pages/Home';
+import VerifyKey from '../pages/VerifyKey';
 import { useState, useMemo, useEffect } from 'react'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getValToken } from './services/auth';
-import { AuthContext } from './contexts/auth';
+import { getValToken } from '../services/auth';
+import { AuthContext } from '../contexts/auth';
+import BottomTabNavigator from './BottomTabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,12 +62,7 @@ export default function Routes() {
             {/* Agrupar as rotas */}
             <NavigationContainer>
                 {userToken ? (
-                    <Stack.Navigator>
-                        <Stack.Screen 
-                            name='Home'
-                            component={Home}
-                        />
-                    </Stack.Navigator>
+                    <BottomTabNavigator />
                 ) : (
                     /* Criar uma pilha de páginas */
                     <Stack.Navigator>

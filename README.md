@@ -55,3 +55,13 @@ async-storage é utilizado para armazenar dados persistentes no dispositivo
 ```
 npx expo install @react-native-async-storage/async-storage
 ```
+
+Criar na parte inferior da tela a barra de navegação
+```
+npm install @react-navigation/bottom-tabs --legacy-peer-deps
+```
+
+Biblioteca de icones
+```
+npm install --save react-native-vector-icons --legacy-peer-deps
+```

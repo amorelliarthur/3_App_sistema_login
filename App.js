@@ -1,4 +1,4 @@
-import Routes from "./src/routes";
+import Routes from "./src/routes/routes";
 
 const App = () => {
   //Carregar o arquivo de rotas
