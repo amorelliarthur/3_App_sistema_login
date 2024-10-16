@@ -11,7 +11,7 @@ import { AuthContext } from '../../contexts/auth';
 
 
 // importar arquivos com componente css
-import { Container, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo } from '../../styles/custom'
+import { ContainerLogin, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo } from '../../styles/custom'
 
 export default function Login (){
 
@@ -102,7 +102,7 @@ export default function Login (){
 
     return (
         <ScrollView contentContainerStyle={{flexGrow:1}}>
-        <Container>
+        <ContainerLogin>
             <Logo>
                 <ImgLogo source={require('../../../assets/logo.png')}/>
             </Logo>
@@ -142,7 +142,7 @@ export default function Login (){
                 </LoadingArea>
             }
             
-        </Container>
+        </ContainerLogin>
         </ScrollView>
     )
 }

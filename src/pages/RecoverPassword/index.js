@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { Alert, ScrollView, ActivityIndicator, Text, View } from 'react-native';
 import { useState } from 'react';
-import { Container, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo } from '../../styles/custom'
+import { ContainerLogin, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo } from '../../styles/custom'
 import api from '../../config/api';
 import * as yup from 'yup';
 import { LoadingArea } from '../../styles/custom';
@@ -61,7 +61,7 @@ export default function RecoverPassword (){
 
     return (
         <ScrollView contentContainerStyle={{flexGrow:1}}>
-        <Container>
+        <ContainerLogin>
             <Logo>
                 <ImgLogo source={require('../../../assets/logo.png')}/>
             </Logo>
@@ -92,7 +92,7 @@ export default function RecoverPassword (){
                 </LoadingArea>
             }
             
-        </Container>
+        </ContainerLogin>
         </ScrollView>
     )
 }

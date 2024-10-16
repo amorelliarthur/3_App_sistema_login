@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.SafeAreaView`
+export const ContainerLogin = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     justify-content: center;
@@ -49,4 +49,8 @@ export const LoadingArea = styled.View`
     background-color: rgba(0,0,0,0.6);
     align-items: center;
     justify-content: center;
+`;
+export const Container = styled.SafeAreaView`
+    flex: 1;
+    background-color: #fff;
 `;

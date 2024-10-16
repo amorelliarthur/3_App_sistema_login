@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Alert, ScrollView, ActivityIndicator, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Container, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo, LoadingArea } from '../../styles/custom'
+import { ContainerLogin, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo, LoadingArea } from '../../styles/custom'
 import api from '../../config/api';
 import * as yup from 'yup';
 
@@ -108,7 +108,7 @@ export default function VerifyKey (){
 
     return (
         <ScrollView contentContainerStyle={{flexGrow:1}}>
-        <Container>
+        <ContainerLogin>
             <Logo>
                 <ImgLogo source={require('../../../assets/logo.png')}/>
             </Logo>
@@ -154,7 +154,7 @@ export default function VerifyKey (){
                     <ActivityIndicator size="large" color='#f5f5f5' />
                 </LoadingArea>
             }
-        </Container>
+        </ContainerLogin>
         </ScrollView>
     )
 }

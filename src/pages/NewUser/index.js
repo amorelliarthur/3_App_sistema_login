@@ -4,7 +4,7 @@ import { ActivityIndicator, Alert, ScrollView} from 'react-native';
 import api from '../../config/api';
 import * as yup from 'yup';
 
-import { Container, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo, LoadingArea } from '../../styles/custom'
+import { ContainerLogin, Logo, InputForm, BtnSubmitForm, TxtSubmitForm, LinkNewUser, ImgLogo, LoadingArea } from '../../styles/custom'
 
 //Criar a função com a tela cadastrar usuario
 
@@ -71,7 +71,7 @@ export default function NewUser (){
 
     return (
         <ScrollView contentContainerStyle={{flexGrow:1}}>
-        <Container>
+        <ContainerLogin>
             <Logo>
                 <ImgLogo source={require('../../../assets/logo.png')}/>
             </Logo>
@@ -111,7 +111,7 @@ export default function NewUser (){
                     <ActivityIndicator size="large" color='#f5f5f5' />
                 </LoadingArea>
             }
-        </Container>
+        </ContainerLogin>
         </ScrollView>
     )
 }
