@@ -52,5 +52,33 @@ export const LoadingArea = styled.View`
 `;
 export const Container = styled.SafeAreaView`
     flex: 1;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: flex-start;
     background-color: #fff;
+    align-self: stretch;
+`;
+
+export const List = styled.View`
+    width: 95%;
+`;
+export const RowData = styled.View`
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    flex-direction: row;
+    justify-content: flex-start;
+`;
+export const InfoData = styled.Text`
+    color: #111;
+    flex: 1;
+    flex-direction: column;
+`;
+export const ValueData = styled.Text`
+    font-size: 16px;
+    flex: 0;
+`;
+export const BtnView = styled.Text`
+    justify-content: flex-end;
 `;
