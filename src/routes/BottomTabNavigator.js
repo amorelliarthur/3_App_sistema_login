@@ -8,6 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import ListUsers from "../pages/ListUsers";
+import { ListUserStack } from "./StackNavigator";
 
 // executar a função para criar a barra de navegação na parte inferior da tela
 const Tab = createBottomTabNavigator();
@@ -28,10 +29,10 @@ const BottomTabNavigator = () => {
                 }}      
             />
             <Tab.Screen
-                name="ListUsers"
-                component={ListUsers}
+                name="ListUsersTab"
+                component={ListUserStack}
                 options={{
-                    headerTitle: 'Listar usuários',
+                    headerShown: false,
                     tabBarLabel: 'Usuários',
                     tabBarIcon: ({color, size}) => (
                         <MaterialCommunityIcons name="view-list" color={color} size={size}/>

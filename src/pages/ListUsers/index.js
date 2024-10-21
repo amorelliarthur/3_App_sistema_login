@@ -1,13 +1,15 @@
-import { Alert, ScrollView, ActivityIndicator, Text, View } from 'react-native';
+import { Alert, ScrollView, ActivityIndicator, Text, View, TouchableOpacity } from 'react-native';
 //importar o context para verificar se o usuario esta logado
 import { useContext, useEffect, useState } from 'react';
 import { Container, LoadingArea, List, RowData, InfoData, ValueData, BtnView } from '../../styles/custom';
 import api from '../../config/api';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function ListUsers (){
+
+    const navigation = useNavigation();
 
     //Armazenar as informações do usuário
     const [users, setUsers] = useState([]);
@@ -51,11 +53,15 @@ export default function ListUsers (){
                                     </ValueData>
                                 </InfoData>
                                 <BtnView>
-                                    <MaterialCommunityIcons
-                                        name='greater-than'
-                                        size={20}
-                                        color={'#c0c0c0'}
-                                    />
+                                    <TouchableOpacity onPress={() => {
+                                        navigation.navigate('ViewUser')
+                                    }}>
+                                        <MaterialCommunityIcons
+                                            name='greater-than'
+                                            size={20}
+                                            color={'#c0c0c0'}
+                                        />
+                                    </TouchableOpacity>
                                 </BtnView>
                             </RowData>
                         )
