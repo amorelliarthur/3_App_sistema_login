@@ -54,7 +54,7 @@ export default function ListUsers (){
                                 </InfoData>
                                 <BtnView>
                                     <TouchableOpacity onPress={() => {
-                                        navigation.navigate('ViewUser')
+                                        navigation.navigate('ViewUser', {userId:user.id})
                                     }}>
                                         <MaterialCommunityIcons
                                             name='greater-than'
