@@ -68,10 +68,10 @@ export default function ListUsers (){
                     })}
                 </List>
                 {loading && 
-                <LoadingArea>
-                    <ActivityIndicator size="large" color='#f5f5f5' />
-                </LoadingArea>
-            }
+                    <LoadingArea>
+                        <ActivityIndicator size="large" color='#f5f5f5' />
+                    </LoadingArea>
+                }
             </Container>      
         </ScrollView>
         
