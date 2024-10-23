@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, Button, ScrollView, Text, View } from 'react-native';
-import { Container, LoadingArea } from '../../styles/custom';
+import { Container, LoadingArea, TitleViewContent, ViewContent, BtnActionEdit, BtnActionDelete, TxtBtnAction} from '../../styles/custom';
 import api from '../../config/api';
 import { useNavigation } from '@react-navigation/native';
 
@@ -26,7 +26,7 @@ export default function ViewUser({route}){
         }).catch((err) => {
             if(err.response){
                 Alert.alert("Ops", err.response.data.message.toString());
-                navigation.navigate('ListUsers')
+                navigation.navigate('ListUsers');
             } else {
                 Alert.alert("Ops", "Erro: Tente novamente mais tarde");
             }
@@ -45,10 +45,27 @@ export default function ViewUser({route}){
     return (
         <ScrollView contentContainerStyle={{flexGrow:1}}>
             <Container>  
-                <Text>ID: {user.id}</Text>
-                <Text>Nome: {user.name}</Text>
-                <Text>Email: {user.email}</Text>
+                <TitleViewContent>ID</TitleViewContent>
+                <ViewContent>{user.id}</ViewContent>
 
+                <TitleViewContent>Nome</TitleViewContent>
+                <ViewContent>{user.name}</ViewContent>
+
+                <TitleViewContent>E-mail</TitleViewContent>
+                <ViewContent>{user.email}</ViewContent>
+
+                <BtnActionEdit>
+                    <TxtBtnAction>
+                        Editar
+                    </TxtBtnAction>
+                </BtnActionEdit>
+
+                <BtnActionDelete>
+                    <TxtBtnAction>
+                        Apagar
+                    </TxtBtnAction>
+                </BtnActionDelete>
+                
                 {loading && 
                     <LoadingArea>
                         <ActivityIndicator size="large" color='#f5f5f5' />

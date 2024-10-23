@@ -60,7 +60,7 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const List = styled.View`
-    width: 95%;
+    width: 100%;
 `;
 export const RowData = styled.View`
     background-color: #f5f5f5;
@@ -81,4 +81,44 @@ export const ValueData = styled.Text`
 `;
 export const BtnView = styled.Text`
     justify-content: flex-end;
+`;
+
+export const TitleViewContent = styled.Text`
+    padding-top: 15px;
+    color: #111;
+    font-weight: bold;
+    font-size: 18px;
+`;
+
+export const ViewContent = styled.Text`
+    padding-bottom: 15px;
+    color: #111;
+    font-size: 18px;
+    border-bottom-color: #c0c0c0;
+    border-bottom-width: 1px;
+`;
+
+export const BtnActionEdit = styled.TouchableOpacity`
+    margin-top: 15px;
+    background-color: #ebb105;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+`;
+
+export const BtnActionDelete = styled.TouchableOpacity`
+    margin-top: 15px;
+    background-color: #dc3545;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+`;
+
+export const TxtBtnAction = styled.Text`
+    color: #fff;
+    font-size: 19px;
 `;
