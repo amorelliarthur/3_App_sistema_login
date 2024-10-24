@@ -122,3 +122,7 @@ export const TxtBtnAction = styled.Text`
     color: #fff;
     font-size: 19px;
 `;
+
+export const TitleIcon = styled.TouchableOpacity`
+    padding: 15px;
+`;

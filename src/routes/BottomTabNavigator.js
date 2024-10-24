@@ -7,7 +7,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 // importar paginas
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
-import ListUsers from "../pages/ListUsers";
 import { ListUserStack } from "./StackNavigator";
 
 // executar a função para criar a barra de navegação na parte inferior da tela
