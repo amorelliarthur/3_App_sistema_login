@@ -126,3 +126,40 @@ export const TxtBtnAction = styled.Text`
 export const TitleIcon = styled.TouchableOpacity`
     padding: 15px;
 `;
+
+export const LabelFormDash = styled.Text`
+    color: #111;
+    font-size: 18px;
+`;
+
+export const InputFormDash = styled.TextInput`
+    background-color: #fff;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    color: #222;
+    font-size: 18px;
+    border-radius: 6px;
+    border-color: #1f51fe;
+    border-width: 1px;;
+`;
+
+export const BtnSubmitFormDash = styled.TouchableOpacity`
+    background-color: #1f51fe;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+`;
+
+export const TxtSubmitFormDash = styled.Text`
+    color: #fff;
+    font-size: 19px;
+`;
+
+export const TxtRequiredFormDash = styled.Text`
+    padding-bottom: 5px;
+    color: #111;
+    font-size: 12px;
+`;
