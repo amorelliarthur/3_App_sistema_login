@@ -1,10 +1,10 @@
 import { Alert, ScrollView, ActivityIndicator, Text, View, TouchableOpacity } from 'react-native';
 //importar o context para verificar se o usuario esta logado
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { Container, LoadingArea, List, RowData, InfoData, ValueData, BtnView } from '../../styles/custom';
 import api from '../../config/api';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 
 export default function ListUsers (){
@@ -36,9 +36,12 @@ export default function ListUsers (){
     }
 
     // executar quando o usuario carregar a tela e chamar a função getUsers
-    useEffect(() => {
-        getUsers();
-    }, []);
+    useFocusEffect(
+        useCallback(() => {
+            getUsers();
+        }, []) 
+    )
+
     return (
         <ScrollView contentContainerStyle={{flexGrow:1}}>
             <Container>
