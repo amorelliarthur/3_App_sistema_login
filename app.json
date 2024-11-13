@@ -3,6 +3,7 @@
     "name": "3_App_sistema_login",
     "slug": "3_App_sistema_login",
     "version": "1.0.0",
+    "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
