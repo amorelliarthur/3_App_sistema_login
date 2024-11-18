@@ -3,6 +3,8 @@ import { ActivityIndicator, Alert, Button, ScrollView, Text, View } from 'react-
 import { Container, LoadingArea, TitleViewContent, ViewContent, BtnActionEdit, BtnActionDelete, TxtBtnAction} from '../../styles/custom';
 import api from '../../config/api';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function ViewUser({route}){
 
@@ -17,10 +19,16 @@ export default function ViewUser({route}){
     const getUser = async () => {
         setLoading(true);
 
+        const token = await AsyncStorage.getItem('@token');
+
         const { userId } = route.params;
 
         //requisição para api indicando a rota
-        await api.get(`/users/${userId}`)
+        await api.get(`/users/${userId}`,{
+            'headers': {
+                'Authorization': `Bearer ${token}`
+            }
+        })
         .then((response) => {
             setUser(response.data.user);
         }).catch((err) => {

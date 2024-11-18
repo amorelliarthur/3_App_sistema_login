@@ -5,6 +5,7 @@ import { Container, LoadingArea, List, RowData, InfoData, ValueData, BtnView } f
 import api from '../../config/api';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function ListUsers (){
@@ -19,8 +20,14 @@ export default function ListUsers (){
     const getUsers = async () => {
         setLoading(true);
 
+        const token = await AsyncStorage.getItem('@token');
+
         //requisição para api indicando a rota
-        await api.get('/users')
+        await api.get('/users', {
+            'headers': {
+                'Authorization': `Bearer ${token}`
+            }
+        })
         .then((response) => {
             setUsers(response.data.users);
         }).catch((err) => {

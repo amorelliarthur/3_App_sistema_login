@@ -6,6 +6,7 @@ import { Container, LabelFormDash, InputFormDash, BtnSubmitFormDash, TxtSubmitFo
 import { useState } from 'react';
 import api from '../../config/api';
 import * as yup from 'yup';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function AddUser (){
@@ -21,6 +22,9 @@ export default function AddUser (){
 
     //Processar/submeter os dados do formulário
     const addUser = async () => {
+
+        const token = await AsyncStorage.getItem('@token');
+
         try{
 
             //Alterar loading para true e paresentar spinner
@@ -32,7 +36,11 @@ export default function AddUser (){
             }, {abortEarly: false});
 
             //requisição para API
-            await api.post('/users', {name, email, password, situationId})
+            await api.post('/users', {name, email, password, situationId}, {
+                'headers': {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             .then((response) => {
                 //console.log(response.data.message);
                 Alert.alert("Sucesso", response.data.message);
