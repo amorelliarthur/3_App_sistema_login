@@ -62,7 +62,7 @@ export default function ViewUser({route}){
                 <TitleViewContent>E-mail</TitleViewContent>
                 <ViewContent>{user.email}</ViewContent>
 
-                <BtnActionEdit>
+                <BtnActionEdit onPress={() => navigation.navigate('EditUser', { userId: user.id})}>
                     <TxtBtnAction>
                         Editar
                     </TxtBtnAction>

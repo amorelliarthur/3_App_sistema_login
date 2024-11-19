@@ -9,6 +9,7 @@ const Stack = createNativeStackNavigator();
 import ListUsers from "../pages/ListUsers";
 import ViewUser from "../pages/ViewUser";
 import AddUser from "../pages/AddUser";
+import EditUser from "../pages/EditUser";
 
 import { TitleIcon } from "../styles/custom";
 
@@ -60,6 +61,14 @@ const ListUserStack = () => {
                 component={AddUser}
                 options={{
                     headerTitle: "Cadastrar Usuário"
+                }}
+            />
+
+            <Stack.Screen 
+                name="EditUser"
+                component={EditUser}
+                options={{
+                    headerTitle: "Editar Usuário"
                 }}
             />
         </Stack.Navigator>
