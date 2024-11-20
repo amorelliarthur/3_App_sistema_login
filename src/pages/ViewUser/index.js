@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, Button, ScrollView, Text, View } from 'react-native';
 import { Container, LoadingArea, TitleViewContent, ViewContent, BtnActionEdit, BtnActionDelete, TxtBtnAction} from '../../styles/custom';
 import api from '../../config/api';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -45,10 +45,12 @@ export default function ViewUser({route}){
         
     }
 
-    //Executar quando o usuario carregar a tela e chamar a função getUser
-    useEffect(() => {
-        getUser();
-    }, []);
+    // executar quando o usuario carregar a tela e chamar a função getUsers
+    useFocusEffect(
+        useCallback(() => {
+            getUser();
+        }, []) 
+    )
 
     return (
         <ScrollView contentContainerStyle={{flexGrow:1}}>
