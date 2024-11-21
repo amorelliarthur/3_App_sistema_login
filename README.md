@@ -65,3 +65,8 @@ Biblioteca de icones
 ```
 npm install --save react-native-vector-icons --legacy-peer-deps
 ```
+
+Biblioteca para criar compo select
+```
+npm i react-native-dropdown-picker
+```

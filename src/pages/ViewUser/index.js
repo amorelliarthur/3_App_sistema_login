@@ -64,6 +64,9 @@ export default function ViewUser({route}){
                 <TitleViewContent>E-mail</TitleViewContent>
                 <ViewContent>{user.email}</ViewContent>
 
+                <TitleViewContent>Situação</TitleViewContent>
+                <ViewContent>{user.id ? user.Situation.nameSituation : ""}</ViewContent>
+
                 <BtnActionEdit onPress={() => navigation.navigate('EditUser', { userId: user.id})}>
                     <TxtBtnAction>
                         Editar
