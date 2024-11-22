@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { BtnActionEdit, Container, InputFormDash, LabelFormDash, LoadingArea, TxtRequiredFormDash, TxtSubmitFormDash } from "../../styles/custom";
 import * as yup from 'yup';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function EditUser({ route }) {
 
@@ -15,6 +16,8 @@ export default function EditUser({ route }) {
     const [email, setEmail] = useState('');
     const [situationId, setSituationId] = useState('');
     const [loading, setLoading] = useState('');
+    const [situations, setSituations] = useState([]);
+    const [open, setOpen] = useState(false);
 
 
     const getUser = async () => {
@@ -50,8 +53,32 @@ export default function EditUser({ route }) {
         })
     }
 
+    const getSituation = async () => {
+        const token = await AsyncStorage.getItem('@token');
+        await api.get('/situations', {
+            'headers': {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((response) => {
+            // console.log(response.data.situations)
+            var listSituations = response.data.situations.map((situation) => {
+                return { label: situation.nameSituation, value: situation.id }
+            });
+
+            setSituations(listSituations);
+        }).catch((err) => {
+            //console.log(err.response.data.message.toString());
+            if (err.response) {
+                setSituations({ label: err.response.data.message, value: "" })
+            } else {
+                setSituations({ label: "Nenhuma situação encontrada", value: "" })
+            }
+        });
+    }
+
     useEffect(() => {
         getUser();
+        getSituation();
     }, []);
 
     const editUser = async () => {
@@ -59,7 +86,7 @@ export default function EditUser({ route }) {
         try {
             setLoading(true);
 
-            await validationSchema.validate({ name, email }, { abortEarly: false });
+            await validationSchema.validate({ name, email, situationId }, { abortEarly: false });
 
             const token = await AsyncStorage.getItem('@token');
 
@@ -96,6 +123,10 @@ export default function EditUser({ route }) {
         email: yup.string("Erro: Necessário preencher o campo E-mail!")
             .required("Erro: Necessário preencher o campo E-mail!")
             .email("Erro: Necessário preencher e-mail válido!"),
+        situationId: yup.number("Erro: Necessário preencher o campo situação!")
+            .required("Erro: Necessário preencher o campo situaçãos!")
+            .positive("Erro: Necessário preencher o campo situação!")
+            .integer("Erro: Necessário preencher o campo situação!"),
     });
 
     return (
@@ -115,6 +146,28 @@ export default function EditUser({ route }) {
                     keyboardType="email-address"
                     value={email}
                     onChangeText={text => setEmail(text)}
+                />
+                <LabelFormDash>* Situação </LabelFormDash>
+                <DropDownPicker
+                    placeholder='Selecione'
+                    open={open}
+                    value={situationId}
+                    items={situations}
+                    setOpen={setOpen}
+                    setValue={setSituationId}
+                    setItems={setSituations}
+                    listMode="SCROLLVIEW"
+                    dropDownContainerStyle={{
+                        borderColor: '#1f51fe',
+                        borderRadius: 6,
+                    }}
+                    textStyle={{
+                        fontSize: 17,
+                    }}
+                    style={{
+                        borderColor: '#1f51fe',
+                        borderRadius: 6
+                    }}
                 />
 
                 <TxtRequiredFormDash>* Campo obrigatório</TxtRequiredFormDash>
