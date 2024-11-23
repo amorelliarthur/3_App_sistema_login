@@ -45,6 +45,31 @@ export default function ViewUser({route}){
         
     }
 
+    const deleteUser = async (userId) => {
+        setLoading(true);
+
+        const token = await AsyncStorage.getItem('@token');
+
+        await api.delete(`/users/${userId}`,{
+            'headers': {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then((response) => {
+            Alert.alert("Sucesso!", response.data.message);
+            navigation.navigate('ListUsers');
+        }).catch((err) => {
+            if(err.response){
+                Alert.alert("Ops", err.response.data.message);
+            } else {
+                Alert.alert("Ops", "Erro: Tente novamente mais tarde");
+            }
+        }).finally (() => {
+            //Alterar loading para false e ocultar spinner
+            setLoading(false);
+        }) 
+    }
+
     // executar quando o usuario carregar a tela e chamar a função getUsers
     useFocusEffect(
         useCallback(() => {
@@ -73,7 +98,7 @@ export default function ViewUser({route}){
                     </TxtBtnAction>
                 </BtnActionEdit>
 
-                <BtnActionDelete>
+                <BtnActionDelete onPress={() => deleteUser(user.id)}>
                     <TxtBtnAction>
                         Apagar
                     </TxtBtnAction>
