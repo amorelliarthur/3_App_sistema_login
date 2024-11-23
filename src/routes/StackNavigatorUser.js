@@ -10,6 +10,7 @@ import ListUsers from "../pages/ListUsers";
 import ViewUser from "../pages/ViewUser";
 import AddUser from "../pages/AddUser";
 import EditUser from "../pages/EditUser";
+import EditPasswordUser from "../pages/EditPasswordUser";
 
 import { TitleIcon } from "../styles/custom";
 
@@ -69,6 +70,14 @@ const ListUserStack = () => {
                 component={EditUser}
                 options={{
                     headerTitle: "Editar Usuário"
+                }}
+            />
+
+            <Stack.Screen
+                name="EditPasswordUser"
+                component={EditPasswordUser}
+                options={{
+                    headerTitle: "Editar Senha do Usuário"
                 }}
             />
         </Stack.Navigator>

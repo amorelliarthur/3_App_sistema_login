@@ -98,6 +98,12 @@ export default function ViewUser({route}){
                     </TxtBtnAction>
                 </BtnActionEdit>
 
+                <BtnActionEdit onPress={() => navigation.navigate('EditPasswordUser', { userId: user.id})}>
+                    <TxtBtnAction>
+                        Editar Senha
+                    </TxtBtnAction>
+                </BtnActionEdit>
+
                 <BtnActionDelete onPress={() => deleteUser(user.id)}>
                     <TxtBtnAction>
                         Apagar
