@@ -83,6 +83,31 @@ export const BtnView = styled.Text`
     justify-content: flex-end;
 `;
 
+// Paginação
+export const Pagination = styled.View`
+    padding: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const PaginationText = styled.Text`
+    background-color: #f5f5f5;
+    font-size: 16px;
+    padding: 12px;
+    margin: 3px;
+    border-radius: 6px;
+`;
+
+export const PaginationTextActive = styled.Text`
+    background-color: #c5c5c5;
+    font-size: 16px;
+    padding: 12px;
+    margin: 3px;
+    border-radius: 6px;
+`;
+// fim paginação
+
 export const TitleViewContent = styled.Text`
     padding-top: 15px;
     color: #111;
@@ -163,3 +188,5 @@ export const TxtRequiredFormDash = styled.Text`
     color: #111;
     font-size: 12px;
 `;
+
+
