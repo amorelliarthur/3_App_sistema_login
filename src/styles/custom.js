@@ -59,6 +59,51 @@ export const Container = styled.SafeAreaView`
     align-self: stretch;
 `;
 
+//dashboard
+export const RowDataHomeOne = styled.TouchableOpacity`
+    background-color: #1b1b45;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    flex-direction: row;
+    justify-content: flex-start;
+`;
+export const RowDataHomeTwo = styled.TouchableOpacity`
+    background-color: #262679;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    flex-direction: row;
+    justify-content: flex-start;
+`;
+export const RowDataHomeThree = styled.TouchableOpacity`
+    background-color: #2f2fa9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    flex-direction: row;
+    justify-content: flex-start;
+`;
+export const RowDataHomeFour = styled.TouchableOpacity`
+    background-color: #3030dc;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    flex-direction: row;
+    justify-content: flex-start;
+`;
+export const InfoDataHome = styled.Text`
+    padding: 20px 0;
+    color: #f5f5f5;
+    flex: 1;
+    flex-direction: column;
+`;
+export const ValueDataHome = styled.Text`
+    font-size: 21px;
+    flex: 0;
+`;
+//fim dashboard
+
 export const List = styled.View`
     width: 100%;
 `;

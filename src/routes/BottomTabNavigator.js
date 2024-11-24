@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 // importar paginas
-import Home from "../pages/Home";
+import { HomeStack } from "./StackNavigatorDashboard";
 import { ListUserStack } from "./StackNavigatorUser";
 import { ProfileStack } from './StackNavigatorProfile'
 
@@ -17,10 +17,10 @@ const BottomTabNavigator = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen
-                name="Home"
-                component={Home}
+                name="HomeStack"
+                component={HomeStack}
                 options={{
-                    headerTitle: 'Dashboard',
+                    headerShown: false,
                     tabBarLabel: 'Dashboard',
                     tabBarIcon: ({color, size}) => (
                         <MaterialCommunityIcons name="home" color={color} size={size}/>
